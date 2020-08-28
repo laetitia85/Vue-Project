@@ -1,7 +1,6 @@
 <template>
   <div id="app">
 
- 
   <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
     <template v-slot:header>Todo List</template>
 
@@ -9,22 +8,32 @@
       It uses utility classes for typography and spacing to space content out within the larger
       container.
     </template>
-
-    <hr class="my-4">
-
     <p>
     New features we will have to done for this project
     </p>
+        <ListTodo :todoList='jumlist' />
+        <AddForm />
   </b-jumbotron>
+ 
 </div>
 
 
 </template>
 
 <script>
+import ListTodo from './ListTodo.vue'
+import AddForm from './AddForm.vue'
+
+
 
 export default {
-  name: 'MyJumbotron',
+  name: 'MyJumbotron', 
+  props: ['jumlist'],
+   components: {
+    ListTodo,
+    AddForm,
+
+ },
 
 }
 </script>
