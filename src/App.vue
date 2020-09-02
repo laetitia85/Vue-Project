@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     
-<MyJumbotron :jumlist='list' @toggle="toggle" @addTodo="addToList"/>
+<MyJumbotron />
 
 
 </div>
@@ -22,41 +22,10 @@ export default {
   data: function () {
   return {
    
-  list: [
-  {id: 0, name: "Ecrire le sujet", todo: true},
-  {id: 1, name: "Faire le sujet", todo: true},
-  {id: 2, name: "Vendre le sujet", todo: true},
-  {id: 3, name: "Partir en vacances", todo: true},
-]
       }
     },
-  methods: {
-    toggle: function(id) {
-      this.list.forEach(elem => {
-        if(elem.todo == true & elem.id == id) {
-          elem.todo = false
-          }
-        else if (elem.todo == false & elem.id == id) {
-          elem.todo = true 
-          }
-        })
-      },
-    addToList(task) {
-      let my_list = { id: this.list.length, name: task, todo: true};
-      this.list.push(my_list)
-      
-      }
-      // addToList(task) {
-      //   this.list.push({
-      //     name: task,
-      //     todo: true,
-      // id: this.list.length
-      //   })
-      // }
-  }
+
 }
-
-
 
 </script>
 

@@ -2,8 +2,8 @@
  
 <div>
 
-<li v-if="lol.todo==true" @click='callMethod'><b-icon icon="check2-circle"></b-icon> {{lol.name}} </li>
-<li v-else-if="lol.todo==false" @click='callMethod' class="barré">
+<li v-if="lol.todo==true" @click='callMethod(lol.id)'><b-icon icon="check2-circle"></b-icon> {{lol.name}} </li>
+<li v-else-if="lol.todo==false" @click='callMethod(lol.id)' class="barré">                                       <!--@click method = fonction callMethod ds laquelle il recupere lol (égale à ma list).id qui est le parametre de la fonction callMethod plus bas -->                                  
 <b-icon icon="check-circle-fill"></b-icon> {{lol.name}} </li>
 
 </div>
@@ -18,8 +18,9 @@ export default {
   props: ['lol'],
 
   methods: {
-    callMethod() {
-    this.$parent.$parent.$emit('toggle',this.lol.id)
+    callMethod(id) {
+       this.$http.put(`http://localhost:8000/todo/${id}`)                                                  //je récupère le put de mon api qui passe deja l id du true au false
+       location.reload();                                                                                  // function qui sert a refresh la page automatiquement si je click sur un nom
     }
   }
 }

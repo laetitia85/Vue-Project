@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-
+  <MyHeader />
   <b-jumbotron bg-variant="info" text-variant="white" border-variant="dark">
     <template v-slot:header>Todo List</template>
 
@@ -11,8 +11,8 @@
     <p>
     New features we will have to done for this project
     </p>
-        <ListTodo :todoList='jumlist' />
-        <AddForm />
+        <router-view :key="$route.path"></router-view>
+        
   </b-jumbotron>
  
 </div>
@@ -21,8 +21,7 @@
 </template>
 
 <script>
-import ListTodo from './ListTodo.vue'
-import AddForm from './AddForm.vue'
+import MyHeader from './MyHeader.vue'
 
 
 
@@ -30,8 +29,7 @@ export default {
   name: 'MyJumbotron', 
   props: ['jumlist'],
    components: {
-    ListTodo,
-    AddForm,
+    MyHeader
 
  },
 
