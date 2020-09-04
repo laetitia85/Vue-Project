@@ -11,6 +11,7 @@
 import MyJumbotron from './components/MyJumbotron.vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'es6-promise/auto'
 
 
 
@@ -19,13 +20,17 @@ export default {
   components: {
     MyJumbotron,
  },
-  data: function () {
-  return {
-   
-      }
-    },
 
+   mounted() {
+      this.$http.get('http://localhost:8000/todo/')                                                    //je récupère mon get de l api
+      .then((response) => {
+        console.log(response.data);
+        this.$store.dispatch('storeList', response.data)
+        console.log(response.data);
+  })
+ }
 }
+   
 
 </script>
 

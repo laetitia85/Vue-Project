@@ -8,13 +8,16 @@ import AddForm from './components/AddForm'
 import ListTodo from './components/ListTodo'
 import VueRouter from 'vue-router'
 import axios from 'axios'
+import Vuex from 'vuex'
+import store from './store'
+import 'es6-promise/auto'
 
 
 Vue.config.productionTip = false
 Vue.use (BootstrapVue)
 Vue.use (IconsPlugin)
 Vue.use(Router)
-// Vue.use(axios)
+Vue.use(Vuex)
 
 Vue.prototype.$http = axios;
 
@@ -32,7 +35,8 @@ const router = new VueRouter ({
 
 new Vue({
   render: h => h(App), 
-  router
+  router,
+  store
 
 }).$mount('#app')
 

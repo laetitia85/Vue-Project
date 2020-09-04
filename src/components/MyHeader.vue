@@ -3,6 +3,7 @@
       specify the link by passing the `to` prop. 
      `<router-link>` will be rendered as an `<a>` tag by default  -->
  <header >
+   <h2>Todo List</h2>
    <router-link to ="/news" class="spacing">news</router-link>                                                     
    <router-link to ="/list" class="spacing">list</router-link>
    <router-link to ="/done" class="spacing">done</router-link>                                                     
