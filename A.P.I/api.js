@@ -5,7 +5,7 @@ const app = express()
 const mongoose = require ('mongoose');                                                                     //La variable mongoose nous permettra d'utiliser les fonctionnalités du module mongoose.
 let urlMongo = 'mongodb://localhost/todoListVue'                                                         //URL de notre base
 
-mongoose.connect(urlMongo , function (err){
+mongoose.connect(urlMongo,{ useUnifiedTopology: true,  useNewUrlParser: true  } , function (err){
     if (err) {throw err}
 });                                                                                                     // Nous connectons l'API à notre base de données
 
@@ -20,12 +20,6 @@ let donneesShema = new mongoose.Schema ({                                       
 
 let donneesModel = mongoose.model('Donnees', donneesShema);                                              // Création du Model pour les donnees
 
-// let maDonnees =  donnees({donneesShema});                                                             // On crée une instance du Model
-
-// maDonnees.save (function (err) {                                                                    // On le sauvegarde dans MongoDB !
-//     if(err) {throw err; }
-//     console.log('donnees ajouté avec succès!!!')
-// });
 
 app.post('/todo', function (req,res) {
     let donnees = new donneesModel ({                                                                // Nous utilisons le schéma donnee
